@@ -1,7 +1,7 @@
 // In frontend/src/App.js
 const React = require('react');
 const { BrowserRouter as Router, Route, Switch } = require('react-router-dom');
-import Header from './components/Header';
+import Header from './Header';
 import Dashboard from './components/Dashboard';
 // Import other components as needed
 
