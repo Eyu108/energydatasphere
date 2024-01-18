@@ -9,7 +9,6 @@
   "dependencies": {
     "express": "^4.17.1",
     "ws": "^8.2.3",
-    "mongoose": "^5.11.15" // Include if you're using Mongoose in your models
-    // Include other dependencies required by your custom modules
+    "mongoose": "^5.11.15" 
   }
 }
