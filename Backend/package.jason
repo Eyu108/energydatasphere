@@ -1,0 +1,15 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for the energydatasphere application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "ws": "^8.2.3",
+    "mongoose": "^5.11.15" // Include if you're using Mongoose in your models
+    // Include other dependencies required by your custom modules
+  }
+}
