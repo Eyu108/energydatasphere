@@ -1,7 +1,7 @@
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
-const fetchDataFromCommoditiesAPI = require('./companyReportsAPI');
+const fetchDataFromCommoditiesAPI = require('./energydatasphere-main/Backend/api/companyReportsAPI.js');
 const Metrics = require('./metricsModel');
 
 const app = express();
