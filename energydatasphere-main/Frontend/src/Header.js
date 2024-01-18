@@ -1,14 +1,11 @@
-// In frontend/src/components/Header.js
-const React = require('react');
-import './Header.css'; // Make sure to create and style Header.css as per your design
+import React from 'react';
 
-function Header() {
-  return (
-    <header className="app-header">
-      <h1>Energy Data Sphere</h1>
-      {/* Additional navigation or branding can go here */}
-    </header>
-  );
+const Header = () => {
+    return (
+        <header className="App-header">
+            <h1>Data Visualization Tool</h1>
+        </header>
+    );
 }
 
-module.exports = Header;
+export default Header;
