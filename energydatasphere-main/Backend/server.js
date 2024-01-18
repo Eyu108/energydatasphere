@@ -2,6 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const http = require('http');
 const WebSocket = require('ws');
+const path = require('path'); // Added for serving static files
 const fetchDataFromCommoditiesAPI = require('./api/companyReportsAPI.js');
 const Metrics = require('./models/metricsModel.js');
 
@@ -10,31 +11,30 @@ const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
 wss.on('connection', (ws) => {
-  console.log('Client connected via WebSocket');
+  // ... WebSocket code ...
+});
 
-  const sendLatestData = async () => {
-    const latestData = await Metrics.find({}).sort({ dateRecorded: -1 }).limit(1);
-    ws.send(JSON.stringify(latestData));
-  };
-
-  sendLatestData(); // Send latest data on new connection
-  const intervalId = setInterval(sendLatestData, 5000); // Update every 5 seconds
-
-  ws.on('close', () => {
-    clearInterval(intervalId);
-    console.log('WebSocket client disconnected');
-  });
+// Simple root route (optional)
+app.get('/', (req, res) => {
+  res.send('Welcome to Energy Data Sphere');
 });
 
 app.get('/api/data', async (req, res) => {
-  const allData = await Metrics.find({});
-  res.json(allData);
+  // ... Existing /api/data route ...
+});
+
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+// Anything that doesn't match the above, send back the index.html file
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
 });
 
 // Periodically fetch new data
 setInterval(fetchDataFromCommoditiesAPI, 3600000); // Fetch new data every hour
 
-// Existing server setup code...
+// ... Existing server setup code ...
 
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
