@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 const http = require('http');
 const WebSocket = require('ws');
 const fetchDataFromCommoditiesAPI = require('./api/companyReportsAPI.js');
