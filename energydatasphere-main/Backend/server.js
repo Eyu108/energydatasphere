@@ -24,11 +24,11 @@ app.get('/api/data', async (req, res) => {
 });
 
 // Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Anything that doesn't match the above, send back the index.html file
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '../frontend', 'Dashboard.js'));
 });
 
 // Periodically fetch new data
