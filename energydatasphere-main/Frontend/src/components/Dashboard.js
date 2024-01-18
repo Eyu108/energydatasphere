@@ -1,27 +1,24 @@
-// In frontend/src/components/Dashboard.js
-const React, { useEffect, useState } = require('react');
-const axios = require('axios');
-const { WebSocket } = require('ws');
+import React from 'react';
+import { Line } from 'react-chartjs-2';
 
-function Dashboard() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    const ws = new WebSocket('ws://localhost:5000');
-    ws.onmessage = (event) => {
-      setData(JSON.parse(event.data));
+const Dashboard = ({ data }) => {
+    
+    const chartData = {
+        labels: data.map(d => d.label),
+        datasets: [{
+            label: 'Dataset Label',
+            data: data.map(d => d.value),
+            fill: false,
+            backgroundColor: 'rgb(75, 192, 192)',
+            borderColor: 'rgba(75, 192, 192, 0.2)',
+        }]
     };
-    return () => ws.close();
-  }, []);
 
-  return (
-    <div>
-      <h2>Dashboard</h2>
-      {/* Add visualization components here */}
-      {/* Example: <BarChart data={data.boePerDay} /> */}
-      <p>Latest Data: {JSON.stringify(data)}</p>
-    </div>
-  );
+    return (
+        <div className="Dashboard">
+            <Line data={chartData} />
+        </div>
+    );
 }
 
-module.exports = Dashboard;
+export default Dashboard;
