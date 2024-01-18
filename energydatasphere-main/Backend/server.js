@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Anything that doesn't match the above, send back the index.html file
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../frontend', 'Dashboard.js'));
+  res.sendFile(path.resolve(__dirname, '../frontend', 'App.js'));
 });
 
 // Periodically fetch new data
