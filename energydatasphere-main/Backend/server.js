@@ -2,7 +2,7 @@ const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
 const fetchDataFromCommoditiesAPI = require('./companyReportsAPI');
-const Metrics = require('./metricsModel');
+const Metrics = require('./models/metricsModel.js');
 
 const app = express();
 const server = http.createServer(app);
