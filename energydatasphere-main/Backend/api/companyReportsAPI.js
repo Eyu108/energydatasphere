@@ -1,5 +1,5 @@
 const axios = require('axios');
-const Metrics = require('./metricsModel');
+const Metrics = require('.energydatasphere-main/Backend/models/metricsModel.js');
 
 const apiKey = 'oi2843317olbxjdooz5gs46ry73lj12quql38ig8k3yfiyd18a860u537m1e';
 const baseUrl = 'https://www.commodities-api.com/api/';
